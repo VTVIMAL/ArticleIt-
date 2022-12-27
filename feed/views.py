@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Post, Category
 
@@ -13,3 +13,10 @@ class HomePage(ListView):
     category = Category.objects.all()
     template_name = "post_list.html"
     ordering = ["-date_created"]
+
+
+
+class PostDetail(DetailView):
+    '''View to show the full content of a post/article '''
+    model = Post
+    template_name = "post_detail.html"
