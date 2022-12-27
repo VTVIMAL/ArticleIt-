@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # THIRD PARTY
-
+    "taggit",
+    "django_quill",
     # LOCAL 
     "accounts.apps.AccountsConfig",
+    'feed.apps.FeedConfig',
 ]
 
 MIDDLEWARE = [
