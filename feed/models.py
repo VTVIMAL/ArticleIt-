@@ -5,6 +5,14 @@ from django_quill.fields import QuillField
 from taggit.managers import TaggableManager
 
 # Create your models here.
+class Category(models.Model):
+    ''' A model for all the different types of categories'''
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     '''Model for the post/article '''
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
