@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # THIRD PARTY
     "taggit",
     "django_quill",
+    "crispy_forms",
+    "crispy_bootstrap5",
     # LOCAL 
     "accounts.apps.AccountsConfig",
     'feed.apps.FeedConfig',
