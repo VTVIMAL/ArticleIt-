@@ -1,5 +1,29 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="auth">
+    <div class="container pt-4 d-flex justify-content-center">
+        <div class="card auth-card">
+            <div class="card-header text-center">
+                <h1>Login</h1>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div>
+                    <button class="btn auth-btn" style="width:100%;" type="submit">Login</button>
+                </div>
+            </form>
+            <a class=" text-small text-center" href="{% url 'account_reset_password' %}">
+                <strong>ForgotPassword?</strong>
+            </a>
+            <hr>
+            <span class="text-center">
+                <p>Don't have an account? <a class="btn btn-sm auth-btn" href="{% url 'account_signup' %}">Sign Up</a>
+                </p>
+            </span>
+        </div>
+    </div>
+</main>
+{% endblock content %}

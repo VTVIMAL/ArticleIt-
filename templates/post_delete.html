@@ -1,5 +1,45 @@
-<form action="" method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to delete the post?</p>
-    <button type="submit">Yes</button>
-</form>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="form">
+    <div class="container pt-4">
+        <!-- <div class="card tag-card mt-2 mb-2">
+            <div class="card-header bg-danger pb-4">
+            </div>
+            <div class="card-body p-0">
+                <h1 class=" text-center"><i class="fa-solid fa-trash fa-fw me-2"></i>Delete</h1>
+            </div>
+        </div> -->
+        <div class="row g-1 mt-2">
+            <div class="col-lg-8">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2>Delete post "{{post.title}}" ?</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Are you sure you want to delete the post?</p>
+                        <form action="" method="post" class="float-end">
+                            {% csrf_token %}
+                            <button class="btn btn-sm btn-danger" type="submit">Confirm</button>
+                            <a class="btn btn-sm btn-info" href="{% url 'post-detail' post.pk %}">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <aside class="col-8 col-lg-4">
+                <div class="card side-card">
+                    {% if user.is_authenticated %}
+                    <p class="text-center">👋Hello {{user.username}}</p>
+                    <p> Got something new to share? <a class="btn btn-sm btn-success"
+                            href="{% url 'create' %}">Create</a></p>
+                    {% else %}
+                    <p class="text-center"> SignUp And Create Your Own Article🥰</p>
+                    <a class="btn btn-primary" href="{% url 'account_signup' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+{% endblock content %}

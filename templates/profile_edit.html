@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="profile">
+    <div class="container-fluid pt-4">
+        <div class="card shadow profile-card p-2 mt-2">
+            <div class="card-header text-center">
+                <div class="container profile-container">
+                    {% if profile.profile_pic %}
+                    <img class="rounded-circle" src="{{ profile.profile_pic.url }}" alt="" width="100px" height="100px">
+                    {% else %}
+                    <div style="font-size: 4rem ;">
+                        <i class="fa-regular fa-circle-user" id="user-icon"></i>
+                    </div>
+                    {% endif %}
+                    <h1>{{ profile.user.username }}</h1>
+                </div>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success float-end" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

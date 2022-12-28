@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="profile">
+    <div class="container-fluid pt-4">
+        <div class="card shadow profile-card p-2 mt-2">
+            <div class="card-header text-center">
+                {% if request.user == profile.user %}
+                <div class="dropdown">
+                    <button class="btn float-end text-muted" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item btn btn-primary" href="{% url 'edit-user' %}">
+                                <i class="fa-solid fa-user-pen fa-fw- me-3"></i>Edit User Info</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item btn btn-primary" href="{% url 'edit-profile' profile.pk %}">
+                                <i class="fa-solid fa-circle-info fa-fw me-3"></i>Edit Profile Info</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item btn btn-primary" href="{% url 'account_change_password' %}">
+                                <i class="fa-solid fa-gear fa-fw me-3"></i>Change Password</a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+                <div class="container profile-container">
+                    {% if profile.profile_pic %}
+                    <a href="{{ profile.profile_pic.url }}">
+                        <img class="rounded-circle" src="{{ profile.profile_pic.url }}" alt="" width="100px"
+                            height="100px">
+                    </a>
+                    {% else %}
+                    <div style="font-size: 4rem ;">
+                        <i class="fa-regular fa-circle-user" id="user-icon"></i>
+                    </div>
+                    {% endif %}
+                    <h1>{{ profile.user.username }}</h1>
+
+                    <div class="text-center">
+                        {% if user.is_authenticated %}
+                        {% if user != request.user %}
+                        {% if is_following %}
+                        <form action="{% url 'remove-follower' profile.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-sm btn-outline-danger">UnFollow</button>
+                        </form>
+                        {% else %}
+                        <form action="{% url 'add-follower' profile.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-sm btn-primary">Follow</button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <span>
+                    Posts: {{ user_posts.count}}&nbsp;&nbsp;
+                    Followers: {{ num_of_followers }}&nbsp;&nbsp;
+                    Following: {{ user.following.count }}
+                </span>
+            </div>
+            <div class="card-body text-center">
+                <p class="text-center">{{ profile.user.email }}</p>
+                {% if profile.bio %}
+                <p class="text-center">{{profile.bio}}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container mt-3" id="user-post-container">
+            <div class="row g-0" data-masonry='{"percentPosition": true }'>
+                {% for post in user_posts %}
+                <div class="col-md-6">
+                    <div class="card-columns explore-card" id="user-posts">
+                        <div class="card-body pt-2">
+                            <p>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'category' post.category %}">{{ post.category }}</a>
+                            </p>
+                            <h4><a href="{% url 'post-detail' post.pk %}"> {{post.title}}</a></h4>
+                            <div style="display:inline">
+                                {% for tag in post.tags.all %}
+                                <span class="m-1">
+                                    <a href="{% url 'tagged-posts' tag %}">#{{tag}}</a>
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="text-muted" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{{post.date_created}}">
+                                {{post.date_created|date:"M d Y"}}
+                                <div class="float-end">
+                                    {% if post.likes.count != 0 %}
+                                    <i class="fa-regular fa-heart"></i>{{post.likes.count}}
+                                    {% endif %}
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

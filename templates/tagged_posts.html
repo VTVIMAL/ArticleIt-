@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="profile">
+    <div class="container-fluid pt-4">
+        <div class="card tag-card mt-2 mb-2">
+            <div class="card-header bg-success pb-4">
+            </div>
+            <div class="card-body p-0">
+                <h1 class=" text-center"><i class="fa-solid fa-hashtag"></i>{{tag}}</h1>
+            </div>
+        </div>
+        <div class="container mt-1" id="user-post-container">
+            <div class="row g-0" data-masonry='{"percentPosition": true }'>
+                {% for post in tagged_posts %}
+                <div class="col-md-6">
+                    <div class="card explore-card" id="user-posts">
+                        <div class="card-header pb-1">
+                            {% if post.author.profile.profile_pic %}
+                            <a href="{% url 'profile' post.author.profile.pk %}">
+                                <img class="rounded-circle" src="{{ post.author.profile.profile_pic.url }}" alt=""
+                                    width="40px" height="40px">
+                                {{post.author}}
+                            </a>
+                            {% else %}
+                            <p>
+                                <a href="{% url 'profile' post.author.profile.pk %}"><i
+                                        class="fa-regular fa-user-circle fa-2xl"></i>
+                                    {{post.author}}
+                                </a>
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'category' post.category %}">{{ post.category }}</a>
+                            </p>
+                            <h4 class="pb-0"><a href="{% url 'post-detail' post.pk %}"> {{post.title}}</a></h4>
+                            <div class="p-0" style="display:inline">
+                                {% for tag in post.tags.all %}
+                                <span class="me-1">
+                                    <a href="{% url 'tagged-posts' tag %}">#{{tag}}</a>
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="text-muted" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{{post.date_created}}">
+                                {{post.date_created|date:"M d Y"}}
+                                <div class="float-end">
+                                    {% if post.likes.count != 0 %}
+                                    <i class="fa-regular fa-heart"></i>{{post.likes.count}}
+                                    {% endif %}
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

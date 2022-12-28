@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="profile">
+    <div class="container-fluid pt-4">
+        <form class="input-group rounded d-flex justify-content-center mt-2 mb-4" method="GET"
+            action="{% url 'profile-search' %}">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" style="max-width: 400px;" name="search"
+                value="{{request.GET.search }}" />
+            <button class="input-group-text border-0" id="search-addon" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <div class="container mt-1" id="user-post-container">
+            <div class="row g-2">
+                <div class="col-lg-7">
+                    {% for profile in profile_list %}
+                    {% if profile.user != request.user %}
+                    <div class="card user-card mb-2">
+                        <div class="card-body pb-0">
+                            <p>
+                                <a href="{% url 'profile' profile.pk %}"><i
+                                        class="fa-regular fa-user-circle fa-2xl"></i>
+                                    {{profile.user}}
+                                </a>
+                            </p>
+                            <p>FOLLOWERS: {{profile.followers.all.count}}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <aside class="col-8 col-lg-4">
+                    <div class="card side-card">
+                        <p class="text-center">Hello World</p>
+                    </div>
+                </aside>
+            </div>
+            <!-- <div class="row g-1" >
+                {% for profile in profile_list %}
+                {% if profile.user != request.user %}
+                <div class="col-lg-8">
+                    <div class="card user-card" id="user-posts">
+                        <div class="card-body pb-0">
+                            <p>
+                                <a class="stretched-link" href="{% url 'profile' profile.pk %}"><i class="fa-regular fa-user-circle fa-2xl"></i>
+                                    {{profile.user}}
+                                </a>
+                            </p>
+                            <p>FOLLOWERS: {{profile.followers.all.count}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <aside class="col-8 col-lg-4 mt-1">
+                    <div class="card side-card">
+                        <p class="text-center">Hello World</p>
+                    </div>
+                </aside>
+            </div> -->
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

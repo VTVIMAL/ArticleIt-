@@ -1,6 +1,44 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.media }}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="form">
+    <div class="container pt-4">
+        <div class="card tag-card mt-2 mb-2">
+            <div class="card-header bg-success pb-4">
+            </div>
+            <div class="card-body p-0">
+                <h1 class=" text-center"><i class="fa-regular fa-pen-to-square fa-fw me-3"></i>Edit</h1>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-lg-8">
+                <div class="card form-card">
+                    <div class="form-group">
+                        <div class="card-body">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form.media }}
+                                {{ form|crispy }}
+                                <button class="btn btn-success float-end mb-3" type="submit">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="col-8 col-lg-4">
+                <div class="card side-card">
+                    {% if user.is_authenticated %}
+                    <p class="text-center">👋Hello {{user.username}}</p>
+                    <p> Got something new to share? <a class="btn btn-sm btn-success"
+                            href="{% url 'create' %}">Create</a></p>
+                    {% else %}
+                    <p class="text-center"> SignUp And Create Your Own Article🥰</p>
+                    <a class="btn btn-primary" href="{% url 'account_signup' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+{% endblock content %}

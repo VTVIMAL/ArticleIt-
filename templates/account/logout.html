@@ -1,5 +1,25 @@
-<form action="" method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to logout?</p>
-    <button type="submit">Confirm</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="auth">
+    <div class="container pt-4 d-flex justify-content-center">
+        <div class="card logout-card mt-4">
+            <div class="card-header text-center">
+                <h1>Logout</h1>
+                <hr>
+            </div>
+            <div class="card-body text-center">
+                <h3>HI {{ user.username|title }}!!</h3>
+                <p>Are you sure you want to logout?</p>
+                <form action="{% url 'account_logout' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-danger btn-sm" type="submit">Logout</button>
+                    <a class="btn btn-sm btn-primary" href="{% url 'home' %}">Back Home</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

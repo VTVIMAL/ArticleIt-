@@ -33,8 +33,7 @@
                     </button>
                     <ul class="collapse show form-check list-group list-group-flush" id="collapse-category">
                         <li>
-                            <a class="list-group-item list-group-item-action ps-4 " href="{% url 'home' %}">Your
-                                Feed</a>
+                            <a class="list-group-item list-group-item-action ps-4 " href="{% url 'home' %}">Your Feed</a>
                         </li>
                         {% for item in category_list %}
                         <li>
@@ -42,12 +41,10 @@
                         </li>
                         {% endfor %}
                     </ul>
-                    <button class="list-group-item list-group-item-action py-2 ripple bg-light"
-                        data-bs-toggle="collapse" data-bs-target="#collapse-contact" aria-current="true">
+                    <button class="list-group-item list-group-item-action py-2 ripple bg-light" data-bs-toggle="collapse" data-bs-target="#collapse-contact" aria-current="true">
                         <i class="fa-solid fa-mobile-screen-button fa-fw me-3"></i><span><strong>Contact</strong></span>
                     </button>
                     <ul class="collapse " id="collapse-contact">
-
                     </ul>
                 </div>
             </div>
@@ -61,30 +58,22 @@
             <div class="container-fluid">
                 <!-- Toggle button -->
                 {% if request.resolver_match.view_name == 'home' or request.resolver_match.view_name == 'category' %}
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
                 {% endif %}
                 <!--Main Brand -->
                 <a class="navbar-brand ms-4" href="{% url 'home' %}">
-                    <img class="logo"
-                        src="https://res.cloudinary.com/dne9u9lgx/image/upload/v1671877455/Article%20It%21/Logo/Logo_f1hebn.png"
-                        alt="logo">
+                    <img class="logo" src="https://res.cloudinary.com/dne9u9lgx/image/upload/v1671877455/Article%20It%21/Logo/Logo_f1hebn.png" alt="logo">
                 </a>
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars fa-sm"></i>
                 </button>
                 <!-- Icons -->
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header">
-                        <img class="logo offcanvas-title" id="offcanvasNavbarLabel"
-                            src="https://res.cloudinary.com/dne9u9lgx/image/upload/v1671877455/Article%20It%21/Logo/Logo_f1hebn.png"
-                            alt="logo"></img>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
+                        <img class="logo offcanvas-title" id="offcanvasNavbarLabel" src="https://res.cloudinary.com/dne9u9lgx/image/upload/v1671877455/Article%20It%21/Logo/Logo_f1hebn.png" alt="logo"></img>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body p-4 pt-0 p-lg-0">
                         <hr class="d-lg-none text-white-50">

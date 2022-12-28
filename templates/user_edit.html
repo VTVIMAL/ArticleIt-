@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="form">
+    <div class="container pt-4">
+        <div class="row g-2">
+            <div class="col-lg-8">
+                <div class="card form-card">
+                    <div class="form-group">
+                        <div class="card-body">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button class="btn btn-success float-end mb-3" type="submit">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="col-8 col-lg-4">
+                <div class="card side-card">
+                    <div class="alert alert-info">
+                        Note <br>
+                        Changing the username and email will change it in your profile
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+{% endblock content %}
