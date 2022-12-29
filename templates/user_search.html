@@ -19,12 +19,18 @@
                     {% if profile.user != request.user %}
                     <div class="card user-card mb-2">
                         <div class="card-body pb-0">
+                            {% if profile.profile_pic %}
+                            <a class="stretched-link" href="{% url 'profile' profile.pk %}">
+                                <img class="rounded-circle" src="{{ profile.profile_pic.url }}" alt="" width="40px" height="40px">
+                                {{profile.user}}
+                            </a>
+                            {% else %}
                             <p>
-                                <a href="{% url 'profile' profile.pk %}"><i
-                                        class="fa-regular fa-user-circle fa-2xl"></i>
+                                <a class="stretched-link" href="{% url 'profile' profile.pk %}"><i class="fa-regular fa-user-circle fa-2xl"></i>
                                     {{profile.user}}
                                 </a>
                             </p>
+                            {% endif %}
                             <p>FOLLOWERS: {{profile.followers.all.count}}</p>
                         </div>
                     </div>
@@ -37,29 +43,6 @@
                     </div>
                 </aside>
             </div>
-            <!-- <div class="row g-1" >
-                {% for profile in profile_list %}
-                {% if profile.user != request.user %}
-                <div class="col-lg-8">
-                    <div class="card user-card" id="user-posts">
-                        <div class="card-body pb-0">
-                            <p>
-                                <a class="stretched-link" href="{% url 'profile' profile.pk %}"><i class="fa-regular fa-user-circle fa-2xl"></i>
-                                    {{profile.user}}
-                                </a>
-                            </p>
-                            <p>FOLLOWERS: {{profile.followers.all.count}}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
-                <aside class="col-8 col-lg-4 mt-1">
-                    <div class="card side-card">
-                        <p class="text-center">Hello World</p>
-                    </div>
-                </aside>
-            </div> -->
         </div>
     </div>
 </main>

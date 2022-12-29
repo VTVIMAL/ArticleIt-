@@ -32,7 +32,7 @@
                     </div>
                     <div class="card-body">
                         <p>
-                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'category' post.category %}">{{ post.category }}</a>
+                            <a class="btn btn-sm cat-btn" href="{% url 'category' post.category %}">{{ post.category }}</a>
                         </p>
                         <h1><a href="{% url 'post-detail' post.pk %}">{{post.title}}</a></h1>
                         <div style="display:inline">

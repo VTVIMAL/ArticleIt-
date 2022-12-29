@@ -9,7 +9,9 @@ from django.urls import reverse
 # Create your models here.
 class CustomUser(AbstractUser):
     ''' Custom user to override the default user settings '''
-    pass
+    
+    def get_absolute_url(self):
+        return reverse('edit-user')
 
 class Profile(models.Model):
     '''Model for the user profile with follows and followers'''

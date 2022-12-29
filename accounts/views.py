@@ -57,7 +57,6 @@ class UpdateUserInfo(LoginRequiredMixin,UpdateView):
     model = CustomUser
     form_class = UserForm
     template_name = 'user_edit.html'
-    success_url = reverse_lazy('profile')
 
     def get_object(self):
         return self.request.user

@@ -118,7 +118,9 @@ class UserSearch(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get('search')
         profile_list = Profile.objects.filter(Q(user__username__icontains=search))
+        list_length = profile_list.count()
         context['profile_list'] = profile_list
+        context['list_length'] = list_length
         return context
 
 class TaggedView(View):

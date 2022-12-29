@@ -382,3 +382,13 @@ nav {
     /* height: 15rem; */
     box-shadow: inset hsla(0, 0, 0, .2) 0 64px 64px 16px;
 }
+
+.cat-btn {
+    border-color:rgb(168, 6, 168);
+    color: rgb(168, 6, 168);
+}
+
+.cat-btn:hover {
+    background-color: rgb(168, 6, 168);
+    color: white;
+}
