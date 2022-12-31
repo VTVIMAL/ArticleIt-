@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from PIL import Image
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -27,6 +28,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+
+    #     profile_img = Image.open(self.profile_pic.path)
+    #     if profile_img.height > 300 or profile_img.width>300:
+    #         output_size = (300, 300)
+    #         profile_img.thumbnail(output_size)
+    #         profile_img.save(self.profile_pic.path)
+
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={'pk': self.pk})

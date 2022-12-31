@@ -1,0 +1,394 @@
+/* MAIN STYLES */
+
+body {
+    background-color: rgb(235, 232, 232);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgba(134, 11, 134);
+}
+
+/* NAVBAR */
+
+nav {
+    background-color: rgba(134, 11, 134);
+}
+
+.nav-link {
+    color: rgb(218, 212, 212);
+}
+
+.nav-link:hover {
+
+    color: rgb(243, 241, 241);
+}
+
+.nav-item>.nav-button {
+    width: auto;
+}
+
+@media (max-width: 991.98px) {
+    .nav-item>.nav-button {
+        width: 100%;
+    }
+}
+
+.logo {
+    width: 100px;
+    height: 53px;
+    padding-bottom: 0.5rem;
+}
+
+.offcanvas {
+    background-color: rgb(134, 11, 134);
+}
+
+/* Sidebar */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0;
+    /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+}
+
+.list-group-item:hover {
+
+    color: rgb(134, 11, 134);
+    transform: scale(1.02);
+
+}
+
+
+/* HomePage */
+
+@media (min-width: 991.98px) {
+    .home {
+        padding-left: 240px;
+    }
+}
+
+.home {
+    display: block;
+    margin-bottom: 4rem;
+    margin-top: 65px;
+}
+
+
+/* CARDS */
+
+.card-body,
+.card-footer {
+    padding-left: 3rem !important;
+}
+
+@media(max-width:500.98px) {
+
+    .card-body,
+    .card-footer {
+        padding-left: 1rem !important;
+    }
+}
+
+.list-card:hover {
+    /* transform: scale(1.05); */
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+
+.list-card {
+    margin-top: 6px;
+    margin-left: 3%;
+    width: 95%;
+    padding-left: 2%;
+    padding-right: 5%;
+    border-radius: 5px;
+}
+
+@media (max-width: 991.98px) {
+    .list-card {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+
+.list-card>.card-header {
+    background-color: white;
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 0;
+}
+
+.list-card>.card-body {
+    padding-top: 0;
+}
+
+.list-card>.card-footer {
+    /* border-top: 0; */
+    margin-top: 0;
+    background-color: white;
+}
+
+.ql-editor {
+    min-height: 12rem;
+    max-height: 30rem;
+    background-color: white;
+}
+
+
+.col-lg-8 {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.side-card {
+    margin-top: 6px;
+    margin-right: 1rem;
+    padding: 5px;
+}
+
+@media (max-width: 991.98px) {
+    .col-8 {
+        margin-left: 11%;
+        width: 80%;
+    }
+}
+
+
+
+.article-card {
+    margin-top: 6px;
+    margin-left: 3%;
+    width: 95%;
+    padding-left: 2%;
+    padding-right: 5%;
+    border-radius: 5px;
+}
+
+.article-card>.card-header {
+    background-color: transparent;
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
+
+.article-card>.card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.article-card>.card-footer {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+    background-color: white;
+}
+
+@media (max-width: 991.98px) {
+
+    .article-card {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+
+@media (min-width: 991.98px) {
+    .detail {
+        padding-left: 60px;
+    }
+}
+
+.detail,
+.form {
+    display: block;
+    margin-bottom: 4rem;
+    margin-top: 65px;
+}
+
+.form-card,
+.auth-card {
+    margin-top: 6px;
+}
+
+.form-card>.card-header {
+    background-color: white;
+}
+
+.auth {
+    display: block;
+    /* margin-bottom: 4rem; */
+    margin-top: 65px;
+    height: 100vh;
+    background-color: rgb(49, 47, 47);
+
+}
+
+.auth-card {
+    padding: 8px;
+    width: 350px;
+    background-image: linear-gradient(111.6deg, rgba(174, 68, 223, 0.69) 27.3%, rgba(246, 135, 135, 0.701) 112.7%);
+
+}
+
+.auth-card>.card-header {
+    background-color: transparent
+}
+
+.logout-card {
+    width: 80%;
+    background-image: linear-gradient(111.6deg, rgba(174, 68, 223, 0.69) 27.3%, rgba(246, 135, 135, 0.701) 112.7%);
+}
+
+.logout-card>.card-header {
+    background-color: transparent;
+    border-bottom: 0;
+}
+
+
+#user-post-container {
+    width: 80%;
+}
+
+
+
+.explore-card {
+    background-color: white;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: rgba(96, 91, 91, 0.856);
+    width: auto;
+    margin: 3px;
+    transition: border-color 1s, box-shadow 0.5s;
+}
+
+.explore-card:hover {
+    border-color: rgb(13, 110, 253);
+    box-shadow: 0px 0px 10px 2px rgb(134, 11, 134, 0.6);
+}
+
+.user-card {
+    transition: border-color 1s, box-shadow 0.5s;
+}
+
+.user-card:hover {
+    border-color: rgb(13, 110, 253);
+    box-shadow: 0px 0px 10px 2px rgba(6, 212, 212, 0.6);
+}
+
+.explore-card>.card-header {
+    background-color: white;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.explore-card>.card-body {
+    background-color: white;
+    padding-top: 2px;
+    padding-bottom: 0;
+    border-radius: 5px;
+
+}
+
+.explore-card>.card-footer {
+    background-color: white;
+
+}
+
+/* PROFILE */
+
+.profile {
+    display: block;
+    margin-bottom: 4rem;
+    margin-top: 65px;
+}
+
+.profile-card,
+.category-card,
+.tag-card {
+    width: 80%;
+    margin-left: 10%;
+
+}
+
+.profile-card>.card-header {
+    background-color: white;
+}
+
+.profile-container {
+    margin-top: 2px;
+    width: 40%;
+    padding: 8px;
+    padding-top: 0;
+    border-radius: 5px;
+}
+
+.auth-btn {
+    background-color: rgb(168, 6, 168);
+    color: white;
+}
+
+/* LIKE */
+.like,
+.unlike {
+    color: red;
+}
+
+.unlike:hover {
+    transform: scale(1.08);
+}
+
+.like:hover {
+    transform: scale(1.08);
+}
+
+.article-image {
+    background-size: cover;
+    border-radius: 5px;
+    /* height: 15rem; */
+    box-shadow: inset hsla(0, 0, 0, .2) 0 64px 64px 16px;
+}
+
+.cat-btn {
+    border-color:rgb(168, 6, 168);
+    color: rgb(168, 6, 168);
+}
+
+.cat-btn:hover {
+    background-color: rgb(168, 6, 168);
+    color: white;
+}

@@ -52,7 +52,7 @@
                             <a class="list-group-item list-group-item-action ps-4" href="https://www.linkedin.com/in/vimalvtprasad/"><i class="fa-brands fa-linkedin me-2"></i>LinkedIn</a>
                         </li>
                         <li>
-                            <a class="list-group-item list-group-item-action ps-4" href="#"><i class="fa-regular fa-envelope me-2"></i>Mail</a>
+                            <a class="list-group-item list-group-item-action ps-4" href="mailto:vimalprasad0000001@gmail.com"><i class="fa-regular fa-envelope me-2"></i>Mail</a>
                         </li>
                     </ul>
                 </div>
@@ -138,7 +138,7 @@
                                 </a>
                                 {% endif %}
                                 <!-- Logout/Account-->
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="navbarDropdown">
                                     {% if request.resolver_match.view_name == 'profile' and profile.user == request.user %}
                                     <li>
                                         <a class="dropdown-item text-danger" href="{% url 'account_logout' %}">
